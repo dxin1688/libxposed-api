@@ -1,0 +1,15 @@
+name: 调用同步 Release 工作流
+
+on:
+  workflow_dispatch:  # 也可以按需添加其他触发条件
+
+jobs:
+  call-sync:
+  
+    uses: dxin1688/Github-Release-Workflows/.github/workflows/multiple_tag_manual-sync-release.yml@main
+    with:
+      upstream_repo: 'LSPosed/LSPosed'
+      tags: 'v0.5.2.0, v0.6.0'
+      target_branch: ''          # 留空则自动检测
+    permissions:
+      contents: write            # 必须，因为需要创建 Release 和 Tag
